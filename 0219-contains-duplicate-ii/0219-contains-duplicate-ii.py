@@ -8,18 +8,9 @@ class Solution(object):
         
         vals={}
         for i in range(len(nums)):
-            if vals.get(nums[i]):
-                indices=vals.get(nums[i])
-                indices.append(i)
-                vals[nums[i]]= indices
-            else:
-                vals[nums[i]]=[i]
+            if vals.get(nums[i])!=None:
+                if abs(i-vals.get(nums[i]))<=k:
+                    return True
+            vals[nums[i]]=i
                 
-        for num in vals.keys():
-            if vals.get(num) and len(vals.get(num))>1:
-                indices=vals.get(num)
-                for i in range(len(indices)-1):
-                    if abs(indices[i+1]-indices[i])<=k:
-                        return True
-        
         return False
