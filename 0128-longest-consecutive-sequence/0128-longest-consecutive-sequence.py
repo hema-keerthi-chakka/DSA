@@ -11,10 +11,9 @@ class Solution(object):
         if len(nums)<=1:
             return len(nums)
         for i in range(len(nums)-1):
+            temp_max+=1
             if nums[i+1]!=(nums[i]+1):
                 temp_max=1
-            else:
-                temp_max+=1
             total_max=max(temp_max,total_max)
             
         return total_max
