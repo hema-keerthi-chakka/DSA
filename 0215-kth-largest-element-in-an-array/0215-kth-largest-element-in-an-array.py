@@ -5,6 +5,17 @@ class Solution(object):
         :type k: int
         :rtype: int
         """
-        n=len(nums)
-        nums.sort()
-        return nums[n-k]
+        
+        # #Sorting
+        # n=len(nums)
+        # nums.sort()
+        # return nums[n-k]
+        
+        maxHeap=[-i for i in nums]
+        heapq.heapify(maxHeap)
+        top=None 
+        while k:
+            top= heapq.heappop(maxHeap)
+            k-=1
+        return -top
+        
