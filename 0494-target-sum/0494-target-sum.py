@@ -9,19 +9,15 @@ class Solution(object):
         n=len(nums)
         dp={}
                 
-        def numWays(i,total):
+        def numWays(i,pending):
             
-            if i==n:
-                if total==target:
-                    return 1
-                else:
-                    return 0 
-                
-            if (i,total) in dp:
-                return dp[(i,total)]
+            if i==-1:
+                return 1 if pending==0 else 0 
             
-            dp[(i,total)] = numWays(i+1,total+nums[i]) + numWays(i+1,total-nums[i])
+            if (i,pending) in dp:
+                return dp[(i,pending)]
             
-            return dp[(i,total)]
+            dp[(i,pending)] = numWays(i-1,pending-nums[i]) + numWays(i-1,pending+nums[i])
+            return dp[(i,pending)]
         
-        return numWays(0,0)
+        return numWays(n-1,target)
