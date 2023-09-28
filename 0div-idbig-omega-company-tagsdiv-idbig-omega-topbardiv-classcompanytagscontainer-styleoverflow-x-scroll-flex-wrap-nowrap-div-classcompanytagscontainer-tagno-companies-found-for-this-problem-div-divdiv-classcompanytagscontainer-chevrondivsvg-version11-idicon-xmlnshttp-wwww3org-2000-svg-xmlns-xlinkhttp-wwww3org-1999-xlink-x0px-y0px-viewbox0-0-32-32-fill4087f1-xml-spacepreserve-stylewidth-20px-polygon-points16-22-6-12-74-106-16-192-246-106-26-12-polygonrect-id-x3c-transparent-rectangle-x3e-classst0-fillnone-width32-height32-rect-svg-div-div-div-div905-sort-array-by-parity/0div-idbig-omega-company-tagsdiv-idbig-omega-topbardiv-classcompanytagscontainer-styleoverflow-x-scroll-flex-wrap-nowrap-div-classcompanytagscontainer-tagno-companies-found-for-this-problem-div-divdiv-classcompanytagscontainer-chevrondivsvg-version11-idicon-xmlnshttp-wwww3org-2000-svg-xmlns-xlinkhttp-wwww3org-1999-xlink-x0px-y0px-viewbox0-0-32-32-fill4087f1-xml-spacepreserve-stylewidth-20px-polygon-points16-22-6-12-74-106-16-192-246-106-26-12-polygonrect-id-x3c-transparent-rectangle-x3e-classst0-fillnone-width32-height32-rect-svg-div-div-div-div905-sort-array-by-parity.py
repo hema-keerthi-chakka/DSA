@@ -1,13 +1,12 @@
 class Solution:
     def sortArrayByParity(self, nums: List[int]) -> List[int]:
-        earr=[]
-        oarr=[]
-        for n in nums:
-            if n&1==1:
-                oarr.append(n)
-            else:
-                earr.append(n)
-                
-        earr.extend(oarr)
-        return earr
+        i=0
+        j=len(nums)-1
         
+        while i<j:
+            if nums[i]&1==1:
+                nums[i],nums[j]=nums[j],nums[i]
+                j-=1
+            else:
+                i+=1
+        return nums
